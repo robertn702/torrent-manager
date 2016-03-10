@@ -24,5 +24,9 @@ def download():
         'curl', '-L', '-o', WATCH_DIR + title + '.torrent', '--compressed', rawurl
     ])
 
+@app.route("/test")
+def test():
+    return 'this is a test'
+
 if __name__ == "__main__":
     app.run()
