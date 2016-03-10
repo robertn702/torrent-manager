@@ -20,6 +20,7 @@ def download():
 
 
   # subprocess.call(['wget', str(url), '-P', WATCH_DIR])
+    print "curl -L -o {0}{1}.torrent --compressed {2}".format(WATCH_DIR, title, rawurl)
     subprocess.call([
         'curl', '-L', '-o', WATCH_DIR + title + '.torrent', '--compressed', rawurl
     ])
