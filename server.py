@@ -21,7 +21,7 @@ def download():
 
     if return_code is 0:
         return 'Torrent successfully added'
-    else
+    else:
         return 'Torrent was not added'
 
 @app.route("/test")
