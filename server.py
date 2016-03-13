@@ -15,12 +15,14 @@ def download():
 
   # subprocess.call(['wget', str(url), '-P', WATCH_DIR])
     print "curl -L -o {0}{1}.torrent --compressed {2}".format(WATCH_DIR, title, rawurl)
-    curl_sp = subprocess.call([
+    return_code = subprocess.call([
         'curl', '-L', '-o', WATCH_DIR + title + '.torrent', '--compressed', rawurl
     ])
 
-    if curl_sp.returncode is 0:
-        return 200
+    if return_code is 0:
+        return 'Torrent successfully added'
+    else
+        return 'Torrent was not added'
 
 @app.route("/test")
 def test():
