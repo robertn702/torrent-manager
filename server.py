@@ -9,21 +9,18 @@ app = Flask(__name__)
 
 @app.route("/download")
 def download():
-    print '/download'
     url = request.args.get('url')
-    print 'url: ' + url
     rawurl = re.sub(r'\?.*', '', url)
-    print 'rawurl: ' + rawurl
     title = parse_qs(urlparse(url).query)['title'][0]
-    print 'title:'
-    print title
-
 
   # subprocess.call(['wget', str(url), '-P', WATCH_DIR])
     print "curl -L -o {0}{1}.torrent --compressed {2}".format(WATCH_DIR, title, rawurl)
-    subprocess.call([
+    curl_sp = subprocess.call([
         'curl', '-L', '-o', WATCH_DIR + title + '.torrent', '--compressed', rawurl
     ])
+
+    if curl_sp.returncode is 0:
+        return 200
 
 @app.route("/test")
 def test():

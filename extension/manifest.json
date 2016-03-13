@@ -3,10 +3,11 @@
   "name": "Torrent Manager",
   "version": "0.0.1",
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "http://*/*"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["jquery-2.2.1.min.js", "background.js"],
     "persistent": false
   }
 }
